@@ -1,0 +1,10 @@
+.books{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0,1fr)); 
+}
+  
+  .book{
+    background-color: #F1D3B3;
+    padding: 10px;
+    margin:10px
+  }
