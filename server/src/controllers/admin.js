@@ -87,5 +87,41 @@ const exportExcel = async(req, res)=>{
     }
 }
 
+const exportExcelBooks = async(req, res)=>{
+    try {
+        let workbook = new excel.Workbook();
+        let worksheet = workbook.addWorksheet("Books");
 
-module.exports = {loginAdmin, logoutAdmin, getAllUsers, exportExcel}
+        worksheet.columns = [
+        { header: "Id", key: "id" },
+        { header: "Title", key: "title" },
+        { header: "Author", key: "author" },
+        { header: "ISBN", key: "isbn"},
+        { header: "description", key: "description"},
+        ];
+
+        const userData = await User.find()
+        userData.map(user=>{
+            worksheet.addRows(book)
+        })
+
+        worksheet.getRow(1).eachCell(cell=>{
+            cell.font = {bold: true}
+        })
+
+        // res is a Stream object
+        res.setHeader(
+        "Content-Type",
+        "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        );
+        res.setHeader(
+        "Content-Disposition",
+        "attachment; filename=" + "users.xlsx")
+        return workbook.xlsx.write(res).then(function () {
+            res.status(200).end();
+        });
+    } catch (e) {
+        res.status(500).json({message: e.message})
+    }
+}
+module.exports = {loginAdmin, logoutAdmin, getAllUsers, exportExcel, exportExcelBooks}
