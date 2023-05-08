@@ -14,3 +14,8 @@ export const loginUserServ = async(user)=>{
     const response = await axios.post('http://localhost:8001/user/login', user)
     return response
 }
+
+export const logoutUserServ = async()=>{
+    const response = await axios.get('http://localhost:8001/user/logout')
+    return response
+}
