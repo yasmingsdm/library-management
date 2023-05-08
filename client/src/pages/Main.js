@@ -2,10 +2,12 @@ import {useEffect, useState } from "react";
 import Books from "../components/Books";
 import { getAllBooksServ } from "../Service/Books";
 import './Main.css'
+import { useNavigate } from "react-router-dom";
 
 function Main() {
   const [books, setBooks] = useState([])
   const [recentBooks, setRecentBooks] = useState([])
+  const navigate = useNavigate()
   useEffect(() => {
     const fetchAllBooks = async () => {
       const response = await getAllBooksServ();
@@ -23,10 +25,21 @@ function Main() {
     fetchAllBooks();
   }, []);
   console.log(recentBooks)
+  const handleClick =()=>{
+    navigate('/books')
+  }
     return (
       <div className="main" >
-        <h1>Recently Added</h1>
-        {recentBooks.length > 0 && <Books books={recentBooks}/>}
+        {recentBooks.length > 0? 
+        <div>
+          <h1>Recently Added</h1> 
+          <Books books={recentBooks}/>
+        </div>
+        : 
+        <div>
+          <h2>No new books added today!</h2>
+          <button onClick={handleClick}>Check all books</button>
+        </div>}
       </div>
     );
   }
