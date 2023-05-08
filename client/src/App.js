@@ -13,6 +13,7 @@ import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import Logout from "./pages/Logout";
 import AllBooks from "./pages/Books";
+import Admin from "./pages/Admin";
 function App() {
   return (
     <div className="App">
@@ -29,6 +30,7 @@ function App() {
         <Route path='/profile' element={<Profile/>}/>
         <Route path='/logout' element={<Logout/>}/>
         <Route path='/books' element={<AllBooks/>}/>
+        <Route path='/admin' element={<Admin/>}/>
    {
         //if login: logout, profile,
       //if adm: create book, update book, delete book, export excel, list of users
