@@ -10,6 +10,9 @@ import 'react-toastify/dist/ReactToastify.css';
 import SignUp from "./pages/SignUp";
 import Activate from "./pages/VerifyEmail";
 import Login from "./pages/Login";
+import Profile from "./pages/Profile";
+import Logout from "./pages/Logout";
+import AllBooks from "./pages/Books";
 function App() {
   return (
     <div className="App">
@@ -23,8 +26,11 @@ function App() {
         <Route path='/signup' element={<SignUp/>}/>
         <Route path='/user/activate/:token' element={<Activate/>}/>
         <Route path='/login' element={<Login/>}/>
-   {   //,, sign in, 
-        //if login: logout, profile, borrow/return
+        <Route path='/profile' element={<Profile/>}/>
+        <Route path='/logout' element={<Logout/>}/>
+        <Route path='/books' element={<AllBooks/>}/>
+   {
+        //if login: logout, profile,
       //if adm: create book, update book, delete book, export excel, list of users
   }
    <Route path='/create-book' element ={<CreateBook/>}/>

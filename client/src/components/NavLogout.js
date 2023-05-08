@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 
-const Nav = ()=>{
+const NavLogout = ()=>{
     return (
     <nav className="nav">
     <NavLink to='/'>HOME</NavLink>
@@ -10,4 +10,4 @@ const Nav = ()=>{
     )
 }
 
-export default Nav;
+export default NavLogout;

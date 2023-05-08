@@ -1,10 +1,11 @@
 import './Header.css'
-import Nav from './Nav';
+import NavLogin from './NavLogin';
+import NavLogout from './NavLogout';
 const Header = ()=>{
 
     return (
     <header className="header">
-        <Nav/>
+        <NavLogin/>
         <h1>Library Website</h1>
     </header>)
 }
