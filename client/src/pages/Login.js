@@ -1,0 +1,63 @@
+import { useState } from "react";
+import Input from "../components/Input";
+import { loginUserServ } from "../Service/Users";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+
+function Login() {
+    const [user, setUser] = useState({
+        username:'',
+        password: ''
+    });
+    const navigate = useNavigate()
+
+    const handleChange= (e)=>{
+        setUser(prevUser => {
+            return {...prevUser, [e.target.name]: e.target.value}
+        })
+    }
+    const inputs = [
+        {id:1,
+        type:'text',
+        name:'username',
+        required: true,
+         },
+        {id:2,
+        type:'password',
+        name:'password',
+        required: true,
+        }]
+
+    const inputsForm = inputs.map(input =>{
+        return (
+        <Input {...input} onChange={handleChange} value={user[input.name]} key={input.id}/>
+        )
+    })
+
+    const handleLogin =async(e)=> { 
+        try {
+            e.preventDefault()
+            const response = await loginUserServ(user)
+            toast(response.data.message)
+             setUser({
+              username:'',
+              password:''
+            })
+            navigate('/')
+          } catch (error) {
+            toast(error.response.data.message)
+          }
+      
+        }
+
+    return (
+      <div className="main" >
+      {inputsForm}
+      <button onClick={handleLogin}>login</button>
+      </div>
+    );
+  }
+
+  
+  
+  export default Login;
