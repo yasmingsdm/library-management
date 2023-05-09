@@ -24,3 +24,8 @@ export const getProfileServ = async()=>{
     const response = await axios.get('http://localhost:8001/user/')
     return response
 }
+
+export const getAllUsersServ = async()=>{
+    const response = await axios.get('http://localhost:8001/admin/dashboard/all-users')
+    return response
+}

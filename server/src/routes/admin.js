@@ -15,7 +15,7 @@ router.use(session({
 
   router.post('/login', loggedout, loginAdmin)
   router.get('/logout', loggedin, logoutAdmin)
-  router.get('/dashboard/all-users', loggedin, isAdmin, getAllUsers)
+  router.get('/dashboard/all-users', getAllUsers)
   router.get('/dashboard/excel/user', loggedin, isAdmin, exportExcel)
   router.get('/dashboard/excel/book', loggedin, isAdmin, exportExcelBooks)
 
