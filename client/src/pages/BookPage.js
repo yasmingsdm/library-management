@@ -9,7 +9,6 @@ function BookPage() {
   const navigate = useNavigate()
     const [book, setBook] = useState([])
   const {isbn} = useParams()
-  console.log(isbn)
   const fetchBook = async()=>{
     const response = await getOneBookServ(isbn)
     setBook(response.data.book)

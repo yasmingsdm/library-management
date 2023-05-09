@@ -17,7 +17,7 @@ router.use(session({
   router.post('/login', loggedout,  loginUser)
   router.get('/logout', loggedin, logoutUser)
   router.route('/')
-  .get(loggedin, profile)
+  .get(profile)
   .delete(loggedin, deleteUser)
   .put(loggedin, updateUser)
   router.post('/reset-password',  resetPassword)

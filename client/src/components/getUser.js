@@ -1,4 +1,3 @@
-import { useState } from "react"
 import { FaTrash } from "react-icons/fa";
 const GetUser = (user)=>{
     const handleBan=()=>{

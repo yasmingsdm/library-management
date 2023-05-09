@@ -85,6 +85,7 @@ const loginUser = async (req, res)=>{
                res.status(400).json({message: 'Wrong password'})
           }
           req.session.userId = alreadyAnUser._id
+          console.log(req.session.userId)
          res.status(200).json({message: 'login ok', alreadyAnUser}) 
      } catch (e) {
          res.status(500).json({message: e.message})
@@ -104,6 +105,7 @@ const logoutUser = (req, res)=>{
 const profile =async (req, res)=>{
     try {
         const userInfo = await User.findById(req.session.userId, {name:1, email:1, _id:0, username:1})
+        console.log(req.session.userId)
         res.status(200).json({message: 'profile', userInfo}) 
     } catch (e) {
         res.status(500).json({message: e.message})
