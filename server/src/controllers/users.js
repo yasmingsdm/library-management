@@ -73,22 +73,22 @@ const loginUser = async (req, res)=>{
         if(!username || !password){
             return  res.status(404).json({message: 'Some information is missing'})
         }
-        const alreadyAnUser = await User.findOne({username})
-        if(!alreadyAnUser){
-            return  res.status(400).json({message: 'Sign up first'})
-        }
-        if(alreadyAnUser.is_banned){
-            return  res.status(400).json({message: 'Banned user'})
-        }
-        const checkPassword = await comparePassword(password, alreadyAnUser.password)
-        if(!checkPassword){
-            res.status(400).json({message: 'Wrong password'})
-        }
-        req.session.userId = alreadyAnUser._id
-        res.status(200).json({message: 'login ok'}) 
-    } catch (e) {
-        res.status(500).json({message: e.message})
-    }
+         const alreadyAnUser = await User.findOne({username})
+         if(!alreadyAnUser){
+             return  res.status(400).json({message: 'Sign up first'})
+         }
+         if(alreadyAnUser.is_banned){
+             return  res.status(400).json({message: 'Banned user'})
+         } 
+         const checkPassword = await comparePassword(password, alreadyAnUser.password)
+           if(!checkPassword){
+               res.status(400).json({message: 'Wrong password'})
+          }
+          req.session.userId = alreadyAnUser._id
+         res.status(200).json({message: 'login ok'}) 
+     } catch (e) {
+         res.status(500).json({message: e.message})
+     }
 }
 
 const logoutUser = (req, res)=>{

@@ -3,8 +3,11 @@ import Input from "../components/Input";
 import { loginUserServ } from "../Service/Users";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { login } from "../features/userSlice";
 
 function Login() {
+  const dispatch = useDispatch()
     const [user, setUser] = useState({
         username:'',
         password: ''
@@ -43,7 +46,8 @@ function Login() {
               username:'',
               password:''
             })
-            navigate('/')
+            dispatch(login())
+            navigate('/profile')
           } catch (error) {
             toast(error.response.data.message)
           }

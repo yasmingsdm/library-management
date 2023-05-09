@@ -14,7 +14,9 @@ import Profile from "./pages/Profile";
 import Logout from "./pages/Logout";
 import AllBooks from "./pages/Books";
 import Admin from "./pages/Admin";
+import { useSelector } from "react-redux";
 function App() {
+  const loggedin = useSelector((state)=>state.user.Loggedin)
   return (
     <div className="App">
      
@@ -24,18 +26,22 @@ function App() {
       <Routes>
         <Route path='/' element={<Main/>}/>
         <Route path='/book/:isbn' element ={<BookPage/>}/>
+        <Route path='/books' element={<AllBooks/>}/>
+        {loggedin?
+        <>
+        <Route path='/profile' element={<Profile/>}/>
+        <Route path='/logout' element={<Logout/>}/>
+        <Route path='/admin' element={<Admin/>}/>
+        <Route path='/create-book' element ={<CreateBook/>}/>
+        </>
+        : <>
         <Route path='/signup' element={<SignUp/>}/>
         <Route path='/user/activate/:token' element={<Activate/>}/>
         <Route path='/login' element={<Login/>}/>
-        <Route path='/profile' element={<Profile/>}/>
-        <Route path='/logout' element={<Logout/>}/>
-        <Route path='/books' element={<AllBooks/>}/>
-        <Route path='/admin' element={<Admin/>}/>
-   {
-        //if login: logout, profile,
-      //if adm: create book, update book, delete book, export excel, list of users
-  }
-   <Route path='/create-book' element ={<CreateBook/>}/>
+        </>
+        }
+        <Route path='*' element={<Main/>}/>
+    
       </Routes>
       <Footer/>
       </BrowserRouter>

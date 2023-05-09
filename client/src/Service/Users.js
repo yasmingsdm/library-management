@@ -19,3 +19,8 @@ export const logoutUserServ = async()=>{
     const response = await axios.get('http://localhost:8001/user/logout')
     return response
 }
+
+export const getProfileServ = async()=>{
+    const response = await axios.get('http://localhost:8001/user/')
+    return response
+}

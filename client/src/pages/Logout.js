@@ -1,15 +1,18 @@
 import { toast } from "react-toastify"
 import { logoutUserServ } from "../Service/Users"
 import { useNavigate } from "react-router-dom"
+import { useDispatch } from "react-redux"
+import { logout } from "../features/userSlice"
 
 const Logout = ()=>{
+    const dispatch = useDispatch()
     const navigate = useNavigate()
     const handleLogout =async(e)=> { 
         try {
             e.preventDefault()
-            const response = await logoutUserServ()
+            dispatch(logout())
+            const response = await logoutUserServ() 
             console.log(response)
-            toast(response.data)
             navigate('/')
           } catch (error) {
             toast(error.response.data.message)
