@@ -1,7 +1,6 @@
 import Book from "./Book";
 
 function Books({books}) {
-  console.log(books)
     return (
       <div className="books">
        {books && books.map((book) => (

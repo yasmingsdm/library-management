@@ -85,7 +85,7 @@ const loginUser = async (req, res)=>{
                res.status(400).json({message: 'Wrong password'})
           }
           req.session.userId = alreadyAnUser._id
-         res.status(200).json({message: 'login ok'}) 
+         res.status(200).json({message: 'login ok', alreadyAnUser}) 
      } catch (e) {
          res.status(500).json({message: e.message})
      }

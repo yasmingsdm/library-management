@@ -4,7 +4,7 @@ import { loginUserServ } from "../Service/Users";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { login } from "../features/userSlice";
+import { admin, login } from "../features/userSlice";
 
 function Login() {
   const dispatch = useDispatch()
@@ -48,12 +48,16 @@ function Login() {
             })
             dispatch(login())
             navigate('/profile')
+            if(response.data.alreadyAnUser.is_admin){
+              dispatch(admin())
+              navigate('/admin')
+            }
+            
           } catch (error) {
             toast(error.response.data.message)
           }
       
         }
-
     return (
       <div className="main" >
       {inputsForm}

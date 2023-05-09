@@ -6,10 +6,17 @@ const getLocalStoreItem = ()=>{
         return JSON.parse(localStorage.getItem('loginStatus'))
     }
 }
+const getLocalStoreAdm = ()=>{
+    if(localStorage.getItem('adminStatus')=== null){
+        return false
+    } else{
+        return JSON.parse(localStorage.getItem('adminStatus'))
+    }
+}
 
 export const userSlice = createSlice({
     name:'user',
-    initialState:{Loggedin: getLocalStoreItem()},
+    initialState:{Loggedin: getLocalStoreItem(), Admin:getLocalStoreAdm()},
     reducers:{
         login:(state)=>{
             localStorage.setItem('loginStatus', 'true');
@@ -18,9 +25,15 @@ export const userSlice = createSlice({
         logout:(state)=>{
             localStorage.setItem('loginStatus', 'false');
             state.Loggedin = getLocalStoreItem()
+            localStorage.setItem('adminStatus', 'false');
+            state.Admin = getLocalStoreAdm()
+        },
+        admin:(state)=>{
+            localStorage.setItem('adminStatus', 'true');
+            state.Admin = getLocalStoreAdm()
         },
     }
 })
 
-export const {login,logout} = userSlice.actions;
+export const {login,logout, admin} = userSlice.actions;
 export default userSlice.reducer

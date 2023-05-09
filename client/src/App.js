@@ -17,6 +17,7 @@ import Admin from "./pages/Admin";
 import { useSelector } from "react-redux";
 function App() {
   const loggedin = useSelector((state)=>state.user.Loggedin)
+  const admin = useSelector((state)=>state.user.Admin)
   return (
     <div className="App">
      
@@ -24,6 +25,11 @@ function App() {
       <ToastContainer/>
       <Header/>
       <Routes>
+        {admin &&
+        <>
+        <Route path='/admin' element={<Admin/>}/>
+        <Route path='/create-book' element ={<CreateBook/>}/>
+        </>}
         <Route path='/' element={<Main/>}/>
         <Route path='/book/:isbn' element ={<BookPage/>}/>
         <Route path='/books' element={<AllBooks/>}/>
@@ -31,8 +37,7 @@ function App() {
         <>
         <Route path='/profile' element={<Profile/>}/>
         <Route path='/logout' element={<Logout/>}/>
-        <Route path='/admin' element={<Admin/>}/>
-        <Route path='/create-book' element ={<CreateBook/>}/>
+        
         </>
         : <>
         <Route path='/signup' element={<SignUp/>}/>
@@ -40,6 +45,7 @@ function App() {
         <Route path='/login' element={<Login/>}/>
         </>
         }
+      
         <Route path='*' element={<Main/>}/>
     
       </Routes>

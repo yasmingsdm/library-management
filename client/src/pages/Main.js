@@ -24,7 +24,6 @@ function Main() {
     };
     fetchAllBooks();
   }, []);
-  console.log(recentBooks)
   const handleClick =()=>{
     navigate('/books')
   }
