@@ -7,13 +7,13 @@ const Admin = ()=>{
         <section className="book">
                 
                 <h2>Users</h2>
-                <nav><NavLink to='/get-users'>Get all</NavLink></nav>
-                <nav><NavLink>Export</NavLink></nav>
+                <NavLink to='/get-users' className={'nav'}>Get all</NavLink>
+                <NavLink className={'nav'}>Export</NavLink>
                 <h2>Books</h2>
-                <nav><NavLink to='/create-book'>Create</NavLink></nav>
-                <nav><NavLink>Update</NavLink></nav>
-                <nav><NavLink>Delete</NavLink></nav>
-                <nav><NavLink>Export</NavLink></nav>
+                <NavLink to='/create-book'className={'nav'}>Create</NavLink>
+                <NavLink className={'nav'}>Update</NavLink>
+                <NavLink className={'nav'}>Delete</NavLink>
+                <NavLink className={'nav'}>Export</NavLink>
         </section>
 
     </div>
