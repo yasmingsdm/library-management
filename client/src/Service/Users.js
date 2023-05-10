@@ -29,3 +29,8 @@ export const getAllUsersServ = async()=>{
     const response = await axios.get('http://localhost:8001/admin/dashboard/all-users')
     return response
 }
+
+export const exportUsersExcel = async()=>{
+    const response = await axios.get('http://localhost:8001/admin//dashboard/excel/user')
+    return response
+}
