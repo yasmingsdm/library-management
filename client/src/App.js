@@ -11,7 +11,6 @@ import SignUp from "./pages/SignUp";
 import Activate from "./pages/VerifyEmail";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
-import Logout from "./pages/Logout";
 import AllBooks from "./pages/Books";
 import Admin from "./pages/Admin";
 import { useSelector } from "react-redux";
@@ -38,7 +37,6 @@ function App() {
         {loggedin?
         <>
         <Route path='/profile' element={<Profile/>}/>
-        <Route path='/logout' element={<Logout/>}/>
         
         </>
         : <>
