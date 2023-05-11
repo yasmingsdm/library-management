@@ -12,7 +12,6 @@ const GetUsers = ()=> {
   useEffect(()=>{
   fetchAllUsers()
   },[])
-  console.log(users)
 
     return (
       <div className="main" >
