@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { getProfileServ } from "../Service/Users";
-import { useLocation, useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { FaPencilAlt, FaTrash } from "react-icons/fa";
 
 const Profile = ()=>{

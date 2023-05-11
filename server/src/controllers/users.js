@@ -107,8 +107,10 @@ const logoutUser = (req, res)=>{
 
 const profile = async (req, res)=>{
     try {
-        const {id} = req.params
-        const profile = await User.findOne({id})
+        const {_id} = req.params
+        console.log(req.params)
+        const profile = await User.findById({_id})
+        console.log(profile)
        res.status(200).json({message:'profile', profile}) 
     } catch (e) {
         res.status(500).json({message: e.message})

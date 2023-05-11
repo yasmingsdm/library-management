@@ -22,7 +22,6 @@ const NavLogin = ()=>{
     <nav className="nav">
     <NavLink to='/'>HOME</NavLink>
     {!admin && <NavLink to='/books'>All books</NavLink>}
-    <NavLink to='/profile'>Profile</NavLink>
     <NavLink to='/' onClick={handleLogout}>Logout</NavLink>
     {admin && <NavLink to='/admin'>Admin</NavLink>}
     </nav>
