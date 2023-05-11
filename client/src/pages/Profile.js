@@ -7,7 +7,6 @@ import { FaPencilAlt, FaTrash } from "react-icons/fa";
 const Profile = ()=>{
     const {state} = useLocation()
     const [user, setUser]= useState([])
-
     const fetchProfile = async()=>{
         try {
             const response = await getProfileServ(state.id)

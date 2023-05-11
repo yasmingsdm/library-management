@@ -12,7 +12,6 @@ const Admin = ()=>{
           } catch (error) {
             toast(error.response.data.message)
           }
-      
         }
 
         const exportBooks =async(e)=> { 
@@ -26,9 +25,8 @@ const Admin = ()=>{
           }
 
     return (
-    <div className="main">
-        <section className="book">
-                
+    <div className="main row">
+        <section className="book admin">
                 <h2>Users</h2>
                 <NavLink to='/get-users' className={'nav'}>Get all</NavLink>
                 <NavLink className={'nav'} onClick={exportUsers} to='/'>Export</NavLink>
@@ -37,7 +35,6 @@ const Admin = ()=>{
                 <NavLink className={'nav'} to='/get-books'>Get all</NavLink>
                 <NavLink className={'nav'}onClick={exportBooks} to='/'>Export</NavLink>
         </section>
-
     </div>
     )
 }

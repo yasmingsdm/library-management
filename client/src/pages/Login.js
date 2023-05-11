@@ -50,7 +50,7 @@ function Login() {
             navigate('/profile', { state: { id: response.data.alreadyAnUser._id } })
             if(response.data.alreadyAnUser.is_admin){
               dispatch(admin())
-              navigate('/admin')
+              navigate('/hadmin', { state: { id: response.data.alreadyAnUser._id } } )
             }
             
           } catch (error) {

@@ -18,6 +18,7 @@ import GetUsers from "./pages/GetUsers";
 import GetBooks from "./pages/GetBooks";
 import ManageBook from "./pages/ManageBook";
 import UpdateBook from "./pages/UpdateBook";
+import HomeAdmin from "./pages/HomeAdmin";
 function App() {
   const loggedin = useSelector((state)=>state.user.Loggedin)
   const admin = useSelector((state)=>state.user.Admin)
@@ -31,6 +32,7 @@ function App() {
         {admin &&
         <>
         <Route path='/admin' element={<Admin/>}/>
+        <Route path='/hadmin' element={<HomeAdmin/>}/>
         <Route path='/create-book' element ={<CreateBook/>}/>
         <Route path='/get-users' element ={<GetUsers/>}/>
         <Route path='/get-books' element ={<GetBooks/>}/>
