@@ -16,7 +16,8 @@ import Admin from "./pages/Admin";
 import { useSelector } from "react-redux";
 import GetUsers from "./pages/GetUsers";
 import GetBooks from "./pages/GetBooks";
-import UpdateBook from "./components/UpdateBook";
+import ManageBook from "./pages/ManageBook";
+import UpdateBook from "./pages/UpdateBook";
 function App() {
   const loggedin = useSelector((state)=>state.user.Loggedin)
   const admin = useSelector((state)=>state.user.Admin)
@@ -33,7 +34,8 @@ function App() {
         <Route path='/create-book' element ={<CreateBook/>}/>
         <Route path='/get-users' element ={<GetUsers/>}/>
         <Route path='/get-books' element ={<GetBooks/>}/>
-        <Route path='/manage-book/:isbn' element ={<UpdateBook/>}/>
+        <Route path='/manage-book/:isbn' element ={<ManageBook/>}/>
+        <Route path='/update-book/:isbn' element ={<UpdateBook/>}/>
         </>}
         <Route path='/' element={<Main/>}/>
         <Route path='/book/:isbn' element ={<BookPage/>}/>

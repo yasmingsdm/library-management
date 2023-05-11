@@ -24,3 +24,8 @@ export const deleteBookServ = async(isbn)=>{
     const response = await axios.delete(`http://localhost:8001/book/${isbn}`)
     return response
 }
+
+export const updateBookServ = async(isbn,book)=>{
+    const response = await axios.put(`http://localhost:8001/book/${isbn}`, book)
+    return response
+}

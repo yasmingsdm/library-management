@@ -1,9 +1,9 @@
 import { FaPencilAlt, FaTrash } from "react-icons/fa";
 import { useNavigate, useParams } from "react-router-dom";
-import { deleteBookServ, getOneBookServ } from "../Service/Books";
+import { deleteBookServ, getOneBookServ} from "../Service/Books";
 import { useEffect, useState } from "react";
 
-function UpdateBook() {
+function ManageBook() {
     const {isbn} = useParams()
     const navigate = useNavigate()
     const [book, setBook] = useState([])
@@ -18,16 +18,19 @@ function UpdateBook() {
             await deleteBookServ(isbn)
             navigate('/get-books')
         }
+        const handleUpdate =async ()=>{
+          navigate(`/update-book/${isbn}`)
+      }
     return (
       <div className="book">
         <h2>{book.title}</h2>
         <h3>{book.author}</h3>
         <p>{book.description}</p>
         <button onClick={handleDelete}><FaTrash/></button>
-        {/* <a className="icon black" href='/get-users' ><FaPencilAlt/></a>  */}
+        <button onClick={handleUpdate}><FaPencilAlt/></button>
        
       </div>
     );
   }
   
-  export default UpdateBook;
+  export default ManageBook;
