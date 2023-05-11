@@ -43,11 +43,19 @@ th,td{
 
 .left{
   float:left;
-  width:50%
+  width:50%;
+  background-color: #F1D3B3;
 }
 
 .row:after {
   content: "";
   display: table;
   clear: both;
+}
+
+input, textarea{
+  width: 100%;
+  margin: 10px;
+  box-sizing: border-box;
+
 }

@@ -51,7 +51,7 @@ function UpdateBook() {
     }
    
     return (
-      <div className="book row">
+      <div className="main row">
         <div className="left">
             <h2>{book.title}</h2>
             <h3>{book.author}</h3>
