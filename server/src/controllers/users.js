@@ -105,11 +105,11 @@ const logoutUser = (req, res)=>{
     }
 }
 
-const profile =async (req, res)=>{
+const profile = async (req, res)=>{
     try {
-        const userInfo = await User.findById(req.session.userId, {name:1, email:1, _id:0, username:1})
-        console.log(req.session.userId)
-        res.status(200).json({message: 'profile', userInfo}) 
+        const {id} = req.params
+        const profile = await User.findOne({id})
+       res.status(200).json({message:'profile', profile}) 
     } catch (e) {
         res.status(500).json({message: e.message})
     }
@@ -117,7 +117,8 @@ const profile =async (req, res)=>{
 
 const deleteUser =async (req, res)=>{
     try {
-        await User.findByIdAndDelete(req.session.userId)
+        const {id} = req.params
+        await User.findByIdAndDelete(id)
         res.status(200).json({message: 'profile deleted'}) 
     } catch (e) {
         res.status(500).json({message: e.message})
@@ -126,7 +127,8 @@ const deleteUser =async (req, res)=>{
 
 const updateUser =async (req, res)=>{
     try {
-       const updatedUser =  await User.findByIdAndUpdate(req.session.userId, {name: req.body.name, email:req.body.email},{new:true})
+        const {id} = req.params
+       const updatedUser =  await User.findByIdAndUpdate(id, {name: req.body.name, email:req.body.email},{new:true})
     if(!updatedUser){
         res.status(400).json({message: 'Error to update profile'}) 
     }

@@ -47,7 +47,7 @@ function Login() {
               password:''
             })
             dispatch(login())
-            navigate('/profile')
+            navigate('/profile', { state: { id: response.data.alreadyAnUser._id } })
             if(response.data.alreadyAnUser.is_admin){
               dispatch(admin())
               navigate('/admin')
