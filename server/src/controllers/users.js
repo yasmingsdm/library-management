@@ -15,7 +15,10 @@ const signUpUser = async (req, res)=>{
         if(password.length < 8){
             return  res.status(400).json({message: 'Your password must have at least 8 characteres'})
         }
-
+        const emailExists = await User.findOne({email})
+        if(emailExists){
+            return  res.status(400).json({message: 'You already have an account here'})
+        }
         const alreadyAnUser = await User.findOne({username})
         if(alreadyAnUser){
             return  res.status(400).json({message: 'You already have an account here'})

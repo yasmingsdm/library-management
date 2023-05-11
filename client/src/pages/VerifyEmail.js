@@ -5,7 +5,7 @@ function Activate() {
     const {token} = useParams()
     const navigate = useNavigate()
     const handleActivate=async ()=>{
-        await activateUserServ({token})
+        await activateUserServ(token)
         navigate('/login')
     }
 

@@ -6,7 +6,9 @@ export const signupUserServ = async(user)=>{
 }
 
 export const activateUserServ = async(token)=>{
-    const response = await axios.post('http://localhost:8001/user/verify-password', token)
+    console.log({token})
+    const response = await axios.post('http://localhost:8001/user/verify-email', {token})
+    console.log('aqui')
     return response
 }
 
