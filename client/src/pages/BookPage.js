@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 function BookPage() {
   const loggedin = useSelector((state)=>state.user.Loggedin)
   const navigate = useNavigate()
-    const [book, setBook] = useState([])
+  const [book, setBook] = useState([])
   const {isbn} = useParams()
   const fetchBook = async()=>{
     const response = await getOneBookServ(isbn)

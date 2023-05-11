@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { toast } from "react-toastify";
 import { createBookServ } from "../Service/Books";
+import { useNavigate } from "react-router-dom";
 
 function CreateBook() {
+    const navigate = useNavigate()
     const [book, setBook] = useState({
         title:'',
         description: '',
@@ -29,6 +31,7 @@ function CreateBook() {
         isbn:'',
         available:''
         })
+        navigate('/get-books')
       } catch (error) {
         toast(error.response.data.message)
       }
