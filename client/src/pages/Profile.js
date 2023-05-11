@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import { getProfileServ } from "../Service/Users";
+import { deleteUserServ, getProfileServ } from "../Service/Users";
 import { useLocation, useNavigate } from "react-router-dom";
 import { FaPencilAlt, FaTrash } from "react-icons/fa";
 
@@ -22,7 +22,9 @@ const Profile = ()=>{
         },[])
 
         const handleDelete =async ()=>{
-            
+            await deleteUserServ(state.id)
+            navigate('/')
+            toast('Profile deleted')
         }
         const handleUpdate = ()=>{
             navigate(`/update-user/${state.id}`)

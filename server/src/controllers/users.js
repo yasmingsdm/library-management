@@ -117,8 +117,8 @@ const profile = async (req, res)=>{
 
 const deleteUser =async (req, res)=>{
     try {
-        const {id} = req.params
-        await User.findByIdAndDelete(id)
+        const {_id} = req.params
+        await User.findByIdAndDelete(_id)
         res.status(200).json({message: 'profile deleted'}) 
     } catch (e) {
         res.status(500).json({message: e.message})

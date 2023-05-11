@@ -41,3 +41,8 @@ export const updateUserServ = async(id,user)=>{
     const response = await axios.put(`http://localhost:8001/user/${id}`, user)
     return response 
 }
+
+export const deleteUserServ = async(id)=>{
+    const response = await axios.delete(`http://localhost:8001/user/${id}`)
+    return response
+}
