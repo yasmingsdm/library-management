@@ -108,9 +108,7 @@ const logoutUser = (req, res)=>{
 const profile = async (req, res)=>{
     try {
         const {_id} = req.params
-        console.log(req.params)
         const profile = await User.findById({_id})
-        console.log(profile)
        res.status(200).json({message:'profile', profile}) 
     } catch (e) {
         res.status(500).json({message: e.message})
@@ -129,8 +127,8 @@ const deleteUser =async (req, res)=>{
 
 const updateUser =async (req, res)=>{
     try {
-        const {id} = req.params
-       const updatedUser =  await User.findByIdAndUpdate(id, {name: req.body.name, email:req.body.email},{new:true})
+        const {_id} = req.params
+       const updatedUser =  await User.findByIdAndUpdate(_id, {name: req.body.name, email:req.body.email},{new:true})
     if(!updatedUser){
         res.status(400).json({message: 'Error to update profile'}) 
     }

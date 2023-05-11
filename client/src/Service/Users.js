@@ -36,3 +36,8 @@ export const exportUsersExcel = async()=>{
     const response = await axios.get('http://localhost:8001/admin//dashboard/excel/user')
     return response
 }
+
+export const updateUserServ = async(id,user)=>{
+    const response = await axios.put(`http://localhost:8001/user/${id}`, user)
+    return response 
+}

@@ -18,7 +18,7 @@ function ManageBook() {
             await deleteBookServ(isbn)
             navigate('/get-books')
         }
-        const handleUpdate =async ()=>{
+        const handleUpdate =()=>{
           navigate(`/update-book/${isbn}`)
       }
     return (

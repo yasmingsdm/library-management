@@ -19,6 +19,7 @@ import GetBooks from "./pages/GetBooks";
 import ManageBook from "./pages/ManageBook";
 import UpdateBook from "./pages/UpdateBook";
 import HomeAdmin from "./pages/HomeAdmin";
+import UpdateUser from "./pages/UpdateUser";
 function App() {
   const loggedin = useSelector((state)=>state.user.Loggedin)
   const admin = useSelector((state)=>state.user.Admin)
@@ -45,6 +46,7 @@ function App() {
         {loggedin?
         <>
         <Route path='/profile' element={<Profile/>}/>
+        <Route path='/update-user/:id' element={<UpdateUser/>}/>
         
         </>
         : <>

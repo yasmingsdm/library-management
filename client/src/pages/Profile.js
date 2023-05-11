@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { getProfileServ } from "../Service/Users";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { FaPencilAlt, FaTrash } from "react-icons/fa";
 
 const Profile = ()=>{
     const {state} = useLocation()
     const [user, setUser]= useState([])
+    const navigate = useNavigate()
     const fetchProfile = async()=>{
         try {
             const response = await getProfileServ(state.id)
@@ -23,8 +24,8 @@ const Profile = ()=>{
         const handleDelete =async ()=>{
             
         }
-        const handleUpdate =async ()=>{
-          
+        const handleUpdate = ()=>{
+            navigate(`/update-user/${state.id}`)
       }
     return (
     <div className="book">
@@ -33,7 +34,6 @@ const Profile = ()=>{
         <p>username: {user.username}</p>
         <button onClick={handleDelete}><FaTrash/></button>
         <button onClick={handleUpdate}><FaPencilAlt/></button>
-        <button onClick={handleUpdate}>Change Password</button>
     </div>
     )
 }
