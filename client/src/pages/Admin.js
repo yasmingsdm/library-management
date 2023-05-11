@@ -2,18 +2,29 @@ import { NavLink } from "react-router-dom";
 import './Admin.css'
 import { toast } from "react-toastify";
 import { exportUsersExcel } from "../Service/Users";
+import { exportBooksExcel } from "../Service/Books";
 
 const Admin = ()=>{
     const exportUsers =async(e)=> { 
         try {
             e.preventDefault()
-            const response = await exportUsersExcel() 
-            console.log(response)
+            await exportUsersExcel() 
           } catch (error) {
             toast(error.response.data.message)
           }
       
         }
+
+        const exportBooks =async(e)=> { 
+          try {
+              e.preventDefault()
+              await exportBooksExcel() 
+            } catch (error) {
+              toast(error.response.data.message)
+            }
+        
+          }
+
     return (
     <div className="main">
         <section className="book">
@@ -25,7 +36,7 @@ const Admin = ()=>{
                 <NavLink to='/create-book'className={'nav'}>Create</NavLink>
                 <NavLink className={'nav'}>Update</NavLink>
                 <NavLink className={'nav'}>Delete</NavLink>
-                <NavLink className={'nav'}>Export</NavLink>
+                <NavLink className={'nav'}onClick={exportBooks} to='/'>Export</NavLink>
         </section>
 
     </div>

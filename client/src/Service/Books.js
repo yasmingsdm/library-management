@@ -14,3 +14,8 @@ export const getOneBookServ = async(isbn)=>{
     const response = await axios.get(`http://localhost:8001/book/${isbn}`)
     return response
 }
+
+export const exportBooksExcel = async()=>{
+    const response = await axios.get('http://localhost:8001/admin//dashboard/excel/book')
+    return response
+}
