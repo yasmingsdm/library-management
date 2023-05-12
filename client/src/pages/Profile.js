@@ -3,9 +3,12 @@ import { toast } from "react-toastify";
 import { deleteUserServ, getProfileServ } from "../Service/Users";
 import { useLocation, useNavigate } from "react-router-dom";
 import { FaPencilAlt, FaTrash } from "react-icons/fa";
+import { useDispatch } from "react-redux";
+import { logout } from "../features/userSlice";
 
 const Profile = ()=>{
     const {state} = useLocation()
+    const dispatch = useDispatch()
     const [user, setUser]= useState([])
     const navigate = useNavigate()
     const fetchProfile = async()=>{
@@ -24,6 +27,7 @@ const Profile = ()=>{
         const handleDelete =async ()=>{
             await deleteUserServ(state.id)
             navigate('/')
+            dispatch(logout())
             toast('Profile deleted')
         }
         const handleUpdate = ()=>{
