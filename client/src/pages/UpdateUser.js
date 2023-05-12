@@ -61,6 +61,7 @@ function UpdateUser() {
         <input type='email' required value={newUser.email} onChange={handleChange} name='email' id='email'/>
         <button type='submit'>Update</button>
         </form>
+        <a href='/reset-password' className="white">Update password</a>
          </div>
       </div>
      );
