@@ -52,3 +52,13 @@ export const banUserServ = async(id)=>{
     console.log('here')
     return response
 }
+
+export const resetPasswordServ = async(user)=>{
+    const response = await axios.post('http://localhost:8001/user/reset-password', user)
+    return response
+}
+
+export const verifyPasswordServ = async(token)=>{
+    const response = await axios.post('http://localhost:8001/user/verify-password', {token})
+    return response
+}

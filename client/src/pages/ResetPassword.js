@@ -1,24 +1,22 @@
 import { useState } from "react";
-import Input from "../components/Input";
-import { loginUserServ } from "../Service/Users";
+import Input from "../components/Input"
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { admin, login } from "../features/userSlice";
+import { resetPasswordServ } from "../Service/Users";
 
-function Login() {
-  const dispatch = useDispatch()
+const ResetPassword = ()=>{
+    const navigate = useNavigate()
     const [user, setUser] = useState({
         username:'',
         password: ''
     });
-    const navigate = useNavigate()
 
     const handleChange= (e)=>{
         setUser(prevUser => {
             return {...prevUser, [e.target.name]: e.target.value}
         })
     }
+
     const inputs = [
         {id:1,
         type:'text',
@@ -36,39 +34,31 @@ function Login() {
         <Input {...input} onChange={handleChange} value={user[input.name]} key={input.id}/>
         )
     })
-
-    const handleLogin =async(e)=> { 
+    const handleReset= async(e)=>{
         try {
             e.preventDefault()
-            const response = await loginUserServ(user)
+            const response = await resetPasswordServ(user)
             toast(response.data.message)
              setUser({
               username:'',
               password:''
             })
-            dispatch(login())
-            navigate('/profile', { state: { id: response.data.alreadyAnUser._id } })
-            if(response.data.alreadyAnUser.is_admin){
-              dispatch(admin())
-              navigate('/hadmin', { state: { id: response.data.alreadyAnUser._id } } )
+    
+            navigate('/')
             }
-            
-          } catch (error) {
+     catch (error) {
             toast(error.response.data.message)
           }
-      
-        }
-    return (
-      <div className="main" >
-        <form> 
-        {inputsForm}
-      <button onClick={handleLogin}>login</button>
-      <a href='/reset-password' className="white">Forget your password?</a>
-        </form>
-      </div>
-    );
-  }
-
+    }
   
-  
-  export default Login;
+        return (
+        <div className="main">
+            <form>
+            {inputsForm}
+            <button onClick={handleReset}>Reset</button>
+            </form>
+            
+        </div>)
+    }
+    
+    export default ResetPassword;

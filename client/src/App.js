@@ -20,6 +20,8 @@ import ManageBook from "./pages/ManageBook";
 import UpdateBook from "./pages/UpdateBook";
 import HomeAdmin from "./pages/HomeAdmin";
 import UpdateUser from "./pages/UpdateUser";
+import ResetPassword from "./pages/ResetPassword";
+import VerifyPassword from "./pages/VerifyPassword";
 function App() {
   const loggedin = useSelector((state)=>state.user.Loggedin)
   const admin = useSelector((state)=>state.user.Admin)
@@ -40,9 +42,13 @@ function App() {
         <Route path='/manage-book/:isbn' element ={<ManageBook/>}/>
         <Route path='/update-book/:isbn' element ={<UpdateBook/>}/>
         </>}
+
         <Route path='/' element={<Main/>}/>
         <Route path='/book/:isbn' element ={<BookPage/>}/>
         <Route path='/books' element={<AllBooks/>}/>
+        <Route path='/reset-password' element={<ResetPassword/>}/>
+        <Route path='/user/reset-password/:token' element={<VerifyPassword/>}/>
+        
         {loggedin?
         <>
         <Route path='/profile' element={<Profile/>}/>

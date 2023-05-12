@@ -1,7 +1,7 @@
 import './Input.css'
 const Input = (props)=>{
     return(
-        <div className="input">
+        <div>
             <label htmlFor={props.name}>{props.name}: </label>
             <input {...props} />
         </div>
