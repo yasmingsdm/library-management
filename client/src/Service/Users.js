@@ -46,3 +46,9 @@ export const deleteUserServ = async(id)=>{
     const response = await axios.delete(`http://localhost:8001/user/${id}`)
     return response
 }
+
+export const banUserServ = async(id)=>{
+    const response = await axios.put(`http://localhost:8001/user/ban/${id}`)
+    console.log('here')
+    return response
+}

@@ -34,11 +34,11 @@ function UpdateUser() {
             e.preventDefault()
             const response = await updateUserServ(id,newUser)
              toast(response.data.message)
+             setUser(newUser)
              setNewUser({
             name:'',
             email: '',
             })
-            navigate('/')
           } catch (error) {
             toast(error.response.data.message)
           }

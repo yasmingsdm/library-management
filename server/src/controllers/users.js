@@ -125,6 +125,23 @@ const deleteUser =async (req, res)=>{
     }
 }
 
+const banUser =async (req, res)=>{
+    try {
+        const {id} = req.params
+        console.log(req.params)
+        const user = await User.findById(id)
+        console.log(user)
+        if(user.is_banned === 0){
+            user.is_banned = 1
+        }else if(user.is_banned ===1){
+            user.is_banned = 0
+        }
+        await user.save()
+        res.status(200).json({message: 'profile banned', user}) 
+    } catch (e) {
+        res.status(500).json({message: e.message})
+    }
+}
 const updateUser =async (req, res)=>{
     try {
         const {_id} = req.params
@@ -196,4 +213,4 @@ const VerifyPassword = (req, res)=>{
     }
 }
 
-module.exports = {signUpUser, VerifyEmail, loginUser, logoutUser, profile, deleteUser, updateUser, resetPassword, VerifyPassword}
+module.exports = {signUpUser, VerifyEmail, loginUser, logoutUser, profile, deleteUser, banUser, updateUser, resetPassword, VerifyPassword}
