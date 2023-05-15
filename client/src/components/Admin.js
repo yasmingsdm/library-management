@@ -7,8 +7,16 @@ import { exportBooksExcel } from "../Service/Books";
 const Admin = ()=>{
     const exportUsers =async(e)=> { 
         try {
-            e.preventDefault()
-            await exportUsersExcel() 
+          e.preventDefault()
+            const response = await exportUsersExcel() 
+            const blob = new Blob([response.data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+            const url = URL.createObjectURL(blob);
+            const link = document.createElement('a');
+            link.href = url;
+            link.setAttribute('download', 'users.xlsx');
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
           } catch (error) {
             toast(error.response.data.message)
           }
@@ -17,6 +25,7 @@ const Admin = ()=>{
         const exportBooks =async(e)=> { 
           try {
               e.preventDefault()
+              
               await exportBooksExcel() 
             } catch (error) {
               toast(error.response.data.message)

@@ -55,7 +55,7 @@ const exportExcel = async(req, res)=>{
         let worksheet = workbook.addWorksheet("Users");
 
         worksheet.columns = [
-        { header: "Id", key: "id" },
+        { header: "Id", key: "_id" },
         { header: "Name", key: "name" },
         { header: "Email", key: "email" },
         { header: "is_admin", key: "is_admin"},
@@ -65,7 +65,7 @@ const exportExcel = async(req, res)=>{
 
         const userData = await User.find({is_admin: 0})
         userData.map(user=>{
-            worksheet.addRows(user)
+            worksheet.addRow(user)
         })
 
         worksheet.getRow(1).eachCell(cell=>{
@@ -94,17 +94,19 @@ const exportExcelBooks = async(req, res)=>{
         let worksheet = workbook.addWorksheet("Books");
 
         worksheet.columns = [
-        { header: "_id", key: "_id" },
-        { header: "title", key: "title" },
-        { header: "description", key: "description"},
-        { header: "isbn", key: "isbn"},
-        { header: "author", key: "author" },
+        { header: "Id", key: "_id" },
+        { header: "Title", key: "title" },
+        { header: "Description", key: "description"},
+        { header: "Isbn", key: "isbn"},
+        { header: "Author", key: "author" },
+        { header: "Borrowed By", key: "borrowedBy"},
         ];
 
         const bookData = await Book.find()
         
         bookData.map(book=>{
-            worksheet.addRows(book)
+            console.log(book)
+            worksheet.addRow(book)
         })
 
         worksheet.getRow(1).eachCell(cell=>{

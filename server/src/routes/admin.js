@@ -1,7 +1,7 @@
 const session = require('express-session')
 const dev = require('../config/config')
 const { loggedin, loggedout, isAdmin } = require('../middlewares/auth')
-const { loginAdmin, logoutAdmin, getAllUsers, deleteUser, exportExcel, exportExcelBooks } = require('../controllers/admin')
+const { loginAdmin, logoutAdmin, getAllUsers, exportExcel, exportExcelBooks } = require('../controllers/admin')
 
 const router = require('express').Router()
 
