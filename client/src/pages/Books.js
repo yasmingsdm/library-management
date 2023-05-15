@@ -11,9 +11,18 @@ function AllBooks() {
   useEffect(()=>{
   fetchAllBooks()
   },[])
+
+  let list = []
+  const [booksList, setBooksList] = useState(list)
+
+  const handleSearch =(e)=>{
+    list = books.filter(book => book.title.toLowerCase().includes(e.target.value.toLowerCase())|| book.author.toLowerCase().includes(e.target.value.toLowerCase()))
+    setBooksList(list)
+}
     return (
-      <div className="main" >
-        {books.length > 0 && <Books books={books}/>}
+      <div className="main-books" >
+        <input type='text' placeholder="Search" onChange={handleSearch} />
+        {books.length > 0 && booksList.length > 0? <Books books={booksList}/>: <Books books={books}/>}
       </div>
     );
   }

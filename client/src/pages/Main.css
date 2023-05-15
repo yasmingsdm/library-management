@@ -12,3 +12,8 @@
   .white{
     color:white
   }
+
+  .main-books{
+    min-height:80vh;
+    background-color:#65647C;
+  }
