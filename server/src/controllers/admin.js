@@ -1,4 +1,5 @@
-const {comparePassword } = require("../helpers/hashPassword")
+const {comparePassword } = require("../helpers/hashPassword");
+const Book = require("../models/books");
 const User = require("../models/users")
 const excel = require("exceljs");
 
@@ -93,15 +94,16 @@ const exportExcelBooks = async(req, res)=>{
         let worksheet = workbook.addWorksheet("Books");
 
         worksheet.columns = [
-        { header: "Id", key: "id" },
-        { header: "Title", key: "title" },
-        { header: "Author", key: "author" },
-        { header: "ISBN", key: "isbn"},
+        { header: "_id", key: "_id" },
+        { header: "title", key: "title" },
         { header: "description", key: "description"},
+        { header: "isbn", key: "isbn"},
+        { header: "author", key: "author" },
         ];
 
-        const userData = await User.find()
-        userData.map(user=>{
+        const bookData = await Book.find()
+        
+        bookData.map(book=>{
             worksheet.addRows(book)
         })
 
@@ -116,9 +118,10 @@ const exportExcelBooks = async(req, res)=>{
         );
         res.setHeader(
         "Content-Disposition",
-        "attachment; filename=" + "users.xlsx")
+        "attachment; filename=" + "books.xlsx")
         return workbook.xlsx.write(res).then(function () {
             res.status(200).end();
+            console.log('ok')
         });
     } catch (e) {
         res.status(500).json({message: e.message})

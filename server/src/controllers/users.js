@@ -86,10 +86,10 @@ const loginUser = async (req, res)=>{
          } 
          const checkPassword = await comparePassword(password, alreadyAnUser.password)
            if(!checkPassword){
-               res.status(400).json({message: 'Wrong password'})
+                return res.status(400).json({message: 'Wrong password'})
           }
           req.session.userId = alreadyAnUser._id
-         res.status(200).json({message: 'login ok', alreadyAnUser}) 
+         return res.status(200).json({message: 'login ok', alreadyAnUser}) 
      } catch (e) {
          res.status(500).json({message: e.message})
      }
