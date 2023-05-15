@@ -47,7 +47,8 @@ function Login() {
               password:''
             })
             dispatch(login())
-            navigate('/profile', { state: { id: response.data.alreadyAnUser._id } })
+            localStorage.setItem('userId', response.data.alreadyAnUser._id )
+            navigate('/profile')
             if(response.data.alreadyAnUser.is_admin){
               dispatch(admin())
               navigate('/hadmin', { state: { id: response.data.alreadyAnUser._id } } )

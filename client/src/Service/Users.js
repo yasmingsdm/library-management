@@ -33,7 +33,7 @@ export const getAllUsersServ = async()=>{
 }
 
 export const exportUsersExcel = async()=>{
-    const response = await axios.get('http://localhost:8001/admin//dashboard/excel/user')
+    const response = await axios.get('http://localhost:8001/admin/dashboard/excel/user')
     return response
 }
 
@@ -65,5 +65,10 @@ export const verifyPasswordServ = async(token)=>{
 
 export const BorrowBookServ = async(user, book)=>{
     const response = await axios.post(`http://localhost:8001/user/${user}/borrow/${book}`)
+    return response
+}
+
+export const ReturnBookServ = async(user, book)=>{
+    const response = await axios.post(`http://localhost:8001/user/${user}/return/${book}`)
     return response
 }

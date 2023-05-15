@@ -1,19 +1,19 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { deleteUserServ, getProfileServ } from "../Service/Users";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { FaPencilAlt, FaTrash } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { logout } from "../features/userSlice";
 
 const Profile = ()=>{
-    const {state} = useLocation()
     const dispatch = useDispatch()
     const [user, setUser]= useState([])
     const navigate = useNavigate()
+    const id = localStorage.getItem('userId')
     const fetchProfile = async()=>{
         try {
-            const response = await getProfileServ(state.id)
+            const response = await getProfileServ(id)
             setUser(response.data.profile)
         } catch (error) {
             toast(error.response.data.message)
@@ -25,13 +25,13 @@ const Profile = ()=>{
         },[])
 
         const handleDelete =async ()=>{
-            await deleteUserServ(state.id)
+            await deleteUserServ(id)
             navigate('/')
             dispatch(logout())
             toast('Profile deleted')
         }
         const handleUpdate = ()=>{
-            navigate(`/update-user/${state.id}`)
+            navigate(`/update-user/${id}`)
       }
     return (
     <div className="book">

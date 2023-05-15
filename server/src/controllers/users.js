@@ -89,7 +89,6 @@ const loginUser = async (req, res)=>{
                res.status(400).json({message: 'Wrong password'})
           }
           req.session.userId = alreadyAnUser._id
-          console.log(req.session.userId)
          res.status(200).json({message: 'login ok', alreadyAnUser}) 
      } catch (e) {
          res.status(500).json({message: e.message})
@@ -230,6 +229,7 @@ const borrowBook = async (req, res) => {
   
       user.books.push(book);
       book.borrowedBy = user;
+      book.available = 0;
   
       await user.save();
       await book.save();
@@ -240,4 +240,32 @@ const borrowBook = async (req, res) => {
     }
   };
 
-module.exports = {signUpUser, VerifyEmail, borrowBook, loginUser, logoutUser, profile, deleteUser, banUser, updateUser, resetPassword, VerifyPassword}
+  const returnBook = async (req, res) => {
+    const { userId, bookId } = req.params;
+  
+    try {
+      const user = await User.findById(userId);
+      const book = await Book.findById(bookId);
+  
+      if (!user || !book) {
+        return res.status(404).json({ error: 'User or book not found.' });
+      }
+  
+      if (!book.borrowedBy) {
+        return res.status(400).json({ error: 'Book is not borrowed.' });
+      }
+  
+      user.books.pull(book);
+      book.borrowedBy = null;
+      book.available = 1;
+  
+      await user.save();
+      await book.save();
+  
+      res.json({ message: 'Book returned' });
+    } catch (e) {
+      res.status(500).json({message: e.message});
+    }
+  };
+
+module.exports = {signUpUser, VerifyEmail, borrowBook, returnBook, loginUser, logoutUser, profile, deleteUser, banUser, updateUser, resetPassword, VerifyPassword}

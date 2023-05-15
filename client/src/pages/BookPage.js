@@ -3,10 +3,11 @@ import { getOneBookServ } from "../Service/Books";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { BorrowBookServ } from "../Service/Users";
+import { BorrowBookServ, ReturnBookServ } from "../Service/Users";
 
 function BookPage() {
   const loggedin = useSelector((state)=>state.user.Loggedin)
+  const id = localStorage.getItem('userId')
   const navigate = useNavigate()
   const [book, setBook] = useState([])
   const {isbn} = useParams()
@@ -23,13 +24,21 @@ function BookPage() {
       navigate('/login')
       toast('Login first to borrow a book')
     }else{
-      //how to get the user?
-      // const response = await BorrowBookServ(user, book)
-      // console.log(response)
-      // toast(response.data.message)
+      const response = await BorrowBookServ(id, book._id)
+      console.log(response)
+      toast(response.data.message)
     }
   }
-
+  const handleReturn=async()=>{
+    if(!loggedin){
+      navigate('/login')
+      toast('Login first to return a book')
+    }else{
+      const response = await ReturnBookServ(id, book._id)
+      console.log(response)
+      toast(response.data.message)
+    }
+  }
   const handleQueue=()=>{
     if(!loggedin){
       navigate('/login')
@@ -46,7 +55,9 @@ function BookPage() {
                 <h2>{book.title}</h2>
                 <h3>{book.author}</h3>
                 <p>{book.description}</p>
-                {book.available === 1?<button onClick={handleBorrow}>Borrow</button> : <button onClick={handleQueue}>Queue</button>}
+                {book.available === 1? <button onClick={handleBorrow}>Borrow</button> : 
+                book.borrowedBy===id?<button onClick={handleReturn}>Return</button>:
+                <button onClick={handleQueue}>Queue</button>}
             </section>
       </div>
     );

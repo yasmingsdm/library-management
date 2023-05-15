@@ -1,4 +1,4 @@
-const { signUpUser, VerifyEmail, loginUser, logoutUser, profile, deleteUser, updateUser, resetPassword, VerifyPassword, banUser, borrowBook } = require('../controllers/users')
+const { signUpUser, VerifyEmail, loginUser, logoutUser, profile, deleteUser, updateUser, resetPassword, VerifyPassword, banUser, borrowBook, returnBook } = require('../controllers/users')
 const session = require('express-session')
 const dev = require('../config/config')
 const { loggedin, loggedout } = require('../middlewares/auth')
@@ -20,6 +20,7 @@ router.use(session({
   router.post('/reset-password',  resetPassword)
   router.post('/verify-password',  VerifyPassword)
   router.post('/:userId/borrow/:bookId', borrowBook)
+  router.post('/:userId/return/:bookId', returnBook)
   router.route('/:_id')
   .get(profile)
   .delete(deleteUser)

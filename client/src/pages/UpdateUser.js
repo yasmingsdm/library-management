@@ -1,11 +1,10 @@
-import {  useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { getProfileServ, updateUserServ } from "../Service/Users";
 
 
 function UpdateUser() {
-    const navigate = useNavigate()
     const {id} = useParams()
     const [user, setUser] = useState([])
     const [newUser, setNewUser] = useState({

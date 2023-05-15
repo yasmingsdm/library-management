@@ -12,7 +12,7 @@ const hashingPassword = async (password)=>{
 
 const comparePassword = async (password, hashedPassword)=>{
     try{
-        return await bcrypt.compare(password, hashedPassword)
+        return await bcrypt.compare(password, hashedPassword) 
     } catch(e){
         console.log(e)
     }
