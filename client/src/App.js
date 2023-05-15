@@ -12,7 +12,7 @@ import Activate from "./pages/VerifyEmail";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import AllBooks from "./pages/Books";
-import Admin from "./pages/Admin";
+import Admin from "./components/Admin";
 import { useSelector } from "react-redux";
 import GetUsers from "./pages/GetUsers";
 import GetBooks from "./pages/GetBooks";
@@ -35,8 +35,7 @@ function App() {
       <Routes>
         {admin &&
         <>
-        <Route path='/admin' element={<Admin/>}/>
-        <Route path='/hadmin' element={<HomeAdmin/>}/>
+        <Route path='/admin' element={<HomeAdmin/>}/>
         <Route path='/create-book' element ={<CreateBook/>}/>
         <Route path='/get-users' element ={<GetUsers/>}/>
         <Route path='/get-books' element ={<GetBooks/>}/>

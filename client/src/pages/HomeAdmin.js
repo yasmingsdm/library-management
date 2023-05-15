@@ -1,5 +1,5 @@
 import Profile from "./Profile"
-import Admin from "./Admin"
+import Admin from "../components/Admin"
 
 const HomeAdmin = ()=>{
       return (
