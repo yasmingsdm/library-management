@@ -19,11 +19,7 @@ const bookSchema = new Schema({
     },
     available:{
         type:Number,
-       required:true
-    },
-    borrowed:{
-        type:Number, 
-        default:0
+       default:1
     },
     author:{
         type: String,

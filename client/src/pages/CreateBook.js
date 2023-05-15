@@ -10,7 +10,6 @@ function CreateBook() {
         description: '',
         author:'',
         isbn:'',
-        available:''
     });
 
     const handleChange= (e)=>{
@@ -28,8 +27,7 @@ function CreateBook() {
             title:'',
         description: '',
         author:'',
-        isbn:'',
-        available:''
+        isbn:''
         })
         navigate('/get-books')
       } catch (error) {
@@ -48,8 +46,6 @@ function CreateBook() {
         <input type='number' required value={book.isbn} onChange={handleChange} name='isbn' id='isbn'/>
         <label htmlFor='description'>Description: </label>
         <textarea value={book.description} onChange={handleChange} name='description' id='description' cols={30} rows={10} required/>
-        <label htmlFor='available'>Quantity: </label>
-        <input type='number' required value={book.available} onChange={handleChange} name='available' id='available'/>
         <button type='submit'>Create</button>
         </form>
         
