@@ -62,3 +62,8 @@ export const verifyPasswordServ = async(token)=>{
     const response = await axios.post('http://localhost:8001/user/verify-password', {token})
     return response
 }
+
+export const BorrowBookServ = async(user, book)=>{
+    const response = await axios.post(`http://localhost:8001/user/${user}/borrow/${book}`)
+    return response
+}

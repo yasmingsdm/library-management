@@ -4,6 +4,7 @@ const { hashingPassword, comparePassword } = require("../helpers/hashPassword")
 const User = require("../models/users")
 const dev = require('../config/config')
 const { sendEmailWithNodeMailer } = require('../helpers/email')
+const Book = require('../models/books')
 
 const signUpUser = async (req, res)=>{
     try{
@@ -212,5 +213,31 @@ const VerifyPassword = (req, res)=>{
         res.status(500).json({message: e.message})
     }
 }
+const borrowBook = async (req, res) => {
+    const { userId, bookId } = req.params;
+  
+    try {
+      const user = await User.findById(userId);
+      const book = await Book.findById(bookId);
+  
+      if (!user || !book) {
+        return res.status(404).json({ error: 'User or book not found.' });
+      }
+  
+      if (book.borrowedBy) {
+        return res.status(400).json({ error: 'Book is already borrowed.' });
+      }
+  
+      user.books.push(book);
+      book.borrowedBy = user;
+  
+      await user.save();
+      await book.save();
+  
+      res.json({ message: 'You will find this book ion youe e-reader in some minutes.' });
+    } catch (e) {
+      res.status(500).json({message: e.message});
+    }
+  };
 
-module.exports = {signUpUser, VerifyEmail, loginUser, logoutUser, profile, deleteUser, banUser, updateUser, resetPassword, VerifyPassword}
+module.exports = {signUpUser, VerifyEmail, borrowBook, loginUser, logoutUser, profile, deleteUser, banUser, updateUser, resetPassword, VerifyPassword}

@@ -3,6 +3,7 @@ import { getOneBookServ } from "../Service/Books";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import { BorrowBookServ } from "../Service/Users";
 
 function BookPage() {
   const loggedin = useSelector((state)=>state.user.Loggedin)
@@ -17,13 +18,15 @@ function BookPage() {
     fetchBook()
     },[])
 
-  const handleBorrow=()=>{
+  const handleBorrow=async()=>{
     if(!loggedin){
       navigate('/login')
       toast('Login first to borrow a book')
     }else{
-      //how to do it?
-      toast('This book will be in your e-reader in some minutes')
+      //how to get the user?
+      // const response = await BorrowBookServ(user, book)
+      // console.log(response)
+      // toast(response.data.message)
     }
   }
 

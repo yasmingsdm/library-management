@@ -1,4 +1,4 @@
-const {Schema, model} = require('mongoose')
+const {Schema, model, default: mongoose} = require('mongoose')
 
 const bookSchema = new Schema({
     title:{
@@ -25,7 +25,8 @@ const bookSchema = new Schema({
         type: String,
         required: [true, 'Please insert the author'],
         trim: true
-    }
+    },
+    borrowedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
 },{timestamps:true})
     
 const Book = model('book', bookSchema)

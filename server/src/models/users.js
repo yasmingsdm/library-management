@@ -1,4 +1,4 @@
-const {Schema, model} = require('mongoose')
+const {Schema, model, default: mongoose} = require('mongoose')
 
 const userSchema = new Schema({
     name:{
@@ -37,6 +37,7 @@ const userSchema = new Schema({
         type: Number,
         default: 0
     },
+    books: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Book' }],
    
 },  {timestamps:true})
 
