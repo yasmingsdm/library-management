@@ -6,7 +6,12 @@ export const createBookServ = async(book)=>{
 }
 
 export const getAllBooksServ = async()=>{
-    const response = await axios.get('http://localhost:8001/book/')
+    const response = await axios.get('http://localhost:8001/book/search')
+    return response.data
+}
+
+export const getAllBooksByPageServ = async(page)=>{
+    const response = await axios.get(`http://localhost:8001/book?page=${page}`)
     return response.data
 }
 

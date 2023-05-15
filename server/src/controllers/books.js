@@ -8,6 +8,17 @@ const getAllBooks = async (req, res)=>{
         res.status(500).json({message: e.message})
     }
 }
+const getAllBooksByPage = async (req, res)=>{
+    try {
+        const page = req.query.page
+        const perPage = 6
+
+        const books = await Book.find().skip((page-1)*perPage).limit(perPage)
+       res.status(200).json({message:'list of books', books}) 
+    } catch (e) {
+        res.status(500).json({message: e.message})
+    }
+}
 
 const getOneBook = async (req, res)=>{
     try {
@@ -58,4 +69,4 @@ const updateBook = async (req, res)=>{
     }
 }
 
-module.exports ={getAllBooks, getOneBook, createBook, deleteBook, updateBook}
+module.exports ={getAllBooks, getOneBook, createBook, deleteBook, updateBook, getAllBooksByPage}

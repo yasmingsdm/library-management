@@ -22,6 +22,7 @@ import HomeAdmin from "./pages/HomeAdmin";
 import UpdateUser from "./pages/UpdateUser";
 import ResetPassword from "./pages/ResetPassword";
 import VerifyPassword from "./pages/VerifyPassword";
+import SearchBook from "./pages/SearchBook";
 function App() {
   const loggedin = useSelector((state)=>state.user.Loggedin)
   const admin = useSelector((state)=>state.user.Admin)
@@ -46,6 +47,7 @@ function App() {
         <Route path='/' element={<Main/>}/>
         <Route path='/book/:isbn' element ={<BookPage/>}/>
         <Route path='/books' element={<AllBooks/>}/>
+        <Route path='/search-book' element={<SearchBook/>}/>
         <Route path='/reset-password' element={<ResetPassword/>}/>
         <Route path='/user/reset-password/:token' element={<VerifyPassword/>}/>
         
