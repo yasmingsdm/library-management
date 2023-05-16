@@ -12,10 +12,8 @@ import Activate from "./pages/VerifyEmail";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import AllBooks from "./pages/Books";
-import Admin from "./components/Admin";
 import { useSelector } from "react-redux";
 import GetUsers from "./pages/GetUsers";
-import GetBooks from "./pages/GetBooks";
 import ManageBook from "./pages/ManageBook";
 import UpdateBook from "./pages/UpdateBook";
 import HomeAdmin from "./pages/HomeAdmin";
@@ -38,7 +36,6 @@ function App() {
         <Route path='/admin' element={<HomeAdmin/>}/>
         <Route path='/create-book' element ={<CreateBook/>}/>
         <Route path='/get-users' element ={<GetUsers/>}/>
-        <Route path='/get-books' element ={<GetBooks/>}/>
         <Route path='/manage-book/:isbn' element ={<ManageBook/>}/>
         <Route path='/update-book/:isbn' element ={<UpdateBook/>}/>
         </>}
