@@ -1,8 +1,8 @@
 import { FaTrash } from "react-icons/fa";
-import { banUserServ, deleteUserServ } from "../Service/Users";
 import { toast } from "react-toastify";
 import { useState } from "react";
 
+import { banUserServ, deleteUserServ } from "../Service/Users";
 const GetUser = (user)=>{
     const [banned, setBanned]= useState(user.is_banned)
     const id= user._id

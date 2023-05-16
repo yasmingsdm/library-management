@@ -1,4 +1,5 @@
 import {createSlice} from '@reduxjs/toolkit'
+
 const getLocalStoreItem = ()=>{
     if(localStorage.getItem('loginStatus')=== null){
         return false

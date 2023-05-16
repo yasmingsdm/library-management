@@ -1,10 +1,11 @@
 import { useState } from "react";
-import Input from "../components/Input";
-import { loginUserServ } from "../Service/Users";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+
 import { admin, login } from "../features/userSlice";
+import Input from "../components/Input";
+import { loginUserServ } from "../Service/Users";
 
 function Login() {
   const dispatch = useDispatch()
