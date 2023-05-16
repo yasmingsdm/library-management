@@ -1,4 +1,5 @@
 import { useNavigate, useParams } from "react-router-dom";
+
 import { activateUserServ } from "../Service/Users";
 
 function Activate() {

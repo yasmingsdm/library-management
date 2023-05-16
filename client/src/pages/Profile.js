@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import { deleteUserServ, getProfileServ } from "../Service/Users";
 import { useNavigate } from "react-router-dom";
 import { FaPencilAlt, FaTrash } from "react-icons/fa";
 import { useDispatch } from "react-redux";
+
 import { logout } from "../features/userSlice";
+import { deleteUserServ, getProfileServ } from "../Service/Users";
 
 const Profile = ()=>{
     const dispatch = useDispatch()

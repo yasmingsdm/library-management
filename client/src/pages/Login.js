@@ -42,7 +42,6 @@ function Login() {
         try {
             e.preventDefault()
             const response = await loginUserServ(user)
-            toast(response.data.message)
              setUser({
               username:'',
               password:''

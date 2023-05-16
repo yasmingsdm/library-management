@@ -1,8 +1,9 @@
 import { useState } from "react";
-import Input from "../components/Input"
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
+
 import { resetPasswordServ } from "../Service/Users";
+import Input from "../components/Input"
 
 const ResetPassword = ()=>{
     const navigate = useNavigate()

@@ -1,18 +1,19 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import { useSelector } from "react-redux";
+
 import './App.css';
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Main from "./pages/Main";
 import BookPage from "./pages/BookPage";
 import CreateBook from "./pages/CreateBook";
-import { ToastContainer } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
 import SignUp from "./pages/SignUp";
 import Activate from "./pages/VerifyEmail";
 import Login from "./pages/Login";
 import Profile from "./pages/Profile";
 import AllBooks from "./pages/Books";
-import { useSelector } from "react-redux";
 import GetUsers from "./pages/GetUsers";
 import ManageBook from "./pages/ManageBook";
 import UpdateBook from "./pages/UpdateBook";
@@ -21,11 +22,12 @@ import UpdateUser from "./pages/UpdateUser";
 import ResetPassword from "./pages/ResetPassword";
 import VerifyPassword from "./pages/VerifyPassword";
 import SearchBook from "./pages/SearchBook";
+
 function App() {
   const loggedin = useSelector((state)=>state.user.Loggedin)
   const admin = useSelector((state)=>state.user.Admin)
   return (
-    <div className="App">
+    <div className="app">
      
       <BrowserRouter>
       <ToastContainer/>

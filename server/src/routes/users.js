@@ -1,9 +1,11 @@
-const { signUpUser, VerifyEmail, loginUser, logoutUser, profile, deleteUser, updateUser, resetPassword, VerifyPassword, banUser, borrowBook, returnBook, queueBook } = require('../controllers/users')
 const session = require('express-session')
+const router = require('express').Router()
+
+const { signUpUser, VerifyEmail, loginUser, logoutUser, profile, deleteUser, updateUser, resetPassword, VerifyPassword, banUser, borrowBook, returnBook, queueBook } = require('../controllers/users')
 const dev = require('../config/config')
 const { loggedin, loggedout } = require('../middlewares/auth')
 
-const router = require('express').Router()
+
 
 router.use(session({
   name: 'user_session',

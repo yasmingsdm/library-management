@@ -1,4 +1,5 @@
 const nodemailer = require("nodemailer");
+
 const dev = require('../config/config')
 
 sendEmailWithNodeMailer = async (emailData) => {

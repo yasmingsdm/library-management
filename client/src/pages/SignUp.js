@@ -1,7 +1,9 @@
 import { useState } from "react";
+import { toast } from "react-toastify";
+
 import Input from "../components/Input";
 import { signupUserServ } from "../Service/Users";
-import { toast } from "react-toastify";
+
 
 function SignUp() {
     const [user, setUser] = useState({
