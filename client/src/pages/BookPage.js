@@ -25,7 +25,6 @@ function BookPage() {
       toast('Login first to borrow a book')
     }else{
       const response = await BorrowBookServ(id, book._id)
-      console.log(response)
       toast(response.data.message)
       navigate('/books')
     }
@@ -36,7 +35,6 @@ function BookPage() {
       toast('Login first to return a book')
     }else{
       const response = await ReturnBookServ(id, book._id)
-      console.log(response)
       toast(response.data.message)
       navigate('/books')
     }
@@ -46,10 +44,7 @@ function BookPage() {
       navigate('/login')
       toast('Login first to borrow a book')
     }else{
-      //how to do it?
-      const response = await QueueBookServ(id, book._id)
-      console.log(response)
-      toast('We will let you know when this book is available')
+      await QueueBookServ(id, book._id)
     }
   }
 
