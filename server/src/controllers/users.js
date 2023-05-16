@@ -268,4 +268,31 @@ const borrowBook = async (req, res) => {
     }
   };
 
-module.exports = {signUpUser, VerifyEmail, borrowBook, returnBook, loginUser, logoutUser, profile, deleteUser, banUser, updateUser, resetPassword, VerifyPassword}
+  const queueBook = async (req, res)=>{
+    const { userId, bookId } = req.params;
+    try {
+        const user = await User.findById(userId);
+        const book = await Book.findById(bookId);
+  
+      if (!user || !book) {
+        return res.status(404).json({ error: 'User or book not found.' });
+      }
+
+      const emailData = {
+        email: user.email,
+        subject: "Book Available",
+        html: `
+        <h2> Hello ${user.name} , </h2>
+        <p> We will let you know when the book ${book.title} is available! </p>     
+        `, // html body
+      };
+   
+    sendEmailWithNodeMailer(emailData)
+
+        res.status(200).json({ message: 'Book available'})
+    } catch (e) {
+        res.status(500).json({message: e.message})
+    }
+}
+
+module.exports = {signUpUser, VerifyEmail, borrowBook, queueBook,  returnBook, loginUser, logoutUser, profile, deleteUser, banUser, updateUser, resetPassword, VerifyPassword}

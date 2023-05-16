@@ -72,3 +72,8 @@ export const ReturnBookServ = async(user, book)=>{
     const response = await axios.post(`http://localhost:8001/user/${user}/return/${book}`)
     return response
 }
+
+export const QueueBookServ = async(user, book)=>{
+    const response = await axios.post(`http://localhost:8001/user/${user}/queue/${book}`)
+    return response
+}

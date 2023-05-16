@@ -3,7 +3,7 @@ import { getOneBookServ } from "../Service/Books";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { BorrowBookServ, ReturnBookServ } from "../Service/Users";
+import { BorrowBookServ, QueueBookServ, ReturnBookServ } from "../Service/Users";
 
 function BookPage() {
   const loggedin = useSelector((state)=>state.user.Loggedin)
@@ -27,6 +27,7 @@ function BookPage() {
       const response = await BorrowBookServ(id, book._id)
       console.log(response)
       toast(response.data.message)
+      navigate('/books')
     }
   }
   const handleReturn=async()=>{
@@ -37,14 +38,17 @@ function BookPage() {
       const response = await ReturnBookServ(id, book._id)
       console.log(response)
       toast(response.data.message)
+      navigate('/books')
     }
   }
-  const handleQueue=()=>{
+  const handleQueue=async()=>{
     if(!loggedin){
       navigate('/login')
       toast('Login first to borrow a book')
     }else{
       //how to do it?
+      const response = await QueueBookServ(id, book._id)
+      console.log(response)
       toast('We will let you know when this book is available')
     }
   }
