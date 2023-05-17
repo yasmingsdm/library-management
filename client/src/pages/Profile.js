@@ -35,7 +35,7 @@ const Profile = ()=>{
             navigate(`/update-user/${id}`)
       }
     return (
-    <div className="book">
+    <div className="book height">
         <h1>Hello, {user.name}</h1>
         <p>e-mail: {user.email}</p>
         <p>username: {user.username}</p>

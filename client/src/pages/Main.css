@@ -3,17 +3,21 @@
     grid-template-columns: repeat(3, minmax(0,1fr)); 
 }
   
-  .book{
+.book{
     background-color: #F1D3B3;
     padding: 10px;
     margin:10px
-  }
+}
 
-  .white{
+.white{
     color:white
-  }
+}
 
   .main-books{
     min-height:80vh;
     background-color:#65647C;
-  }
+}
+
+.height{
+  min-height:80vh;
+}
