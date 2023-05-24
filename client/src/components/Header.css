@@ -1,0 +1,9 @@
+.header{
+    background-color: #C7BCA1;
+    padding: 5px;
+}
+
+.nav{
+    display: flex;
+    justify-content: space-around;
+}

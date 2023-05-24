@@ -1,0 +1,61 @@
+.app {
+  text-align: center;
+}
+
+a:hover{
+  color:antiquewhite;
+
+}
+
+a{
+  text-decoration: none;
+  color:#65647C
+}
+
+.main{
+  min-height:80vh;
+  background-color:#65647C;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+button{
+  background-color: #8B7E74;
+  border-radius: 10px;
+  color: #F1D3B3;
+  margin: 5px;
+  padding: 5px;
+}
+
+table,th, td{
+  border:white solid 2px;
+  border-collapse: collapse;
+  color:white
+}
+th,td{
+  padding: 10px;
+}
+
+.icon{
+  color:white
+}
+
+.left{
+  float:left;
+  width:50%;
+  background-color: #F1D3B3;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+input, textarea{
+  width: 100%;
+  margin: 10px;
+  box-sizing: border-box;
+
+}
