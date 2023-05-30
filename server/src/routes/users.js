@@ -1,4 +1,4 @@
-const session = require('cookie-session')
+const session = require('express-session')
 const router = require('express').Router()
 
 const { signUpUser, VerifyEmail, loginUser, logoutUser, profile, deleteUser, updateUser, resetPassword, VerifyPassword, banUser, borrowBook, returnBook, queueBook } = require('../controllers/users')

@@ -1,4 +1,4 @@
-const session = require('cookie-session')
+const session = require('express-session')
 const router = require('express').Router()
 
 const dev = require('../config/config')
