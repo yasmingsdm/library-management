@@ -1,9 +1,6 @@
 import { NavLink } from "react-router-dom";
-import { toast } from "react-toastify";
 
 import '../pages/Admin.css'
-import { exportUsersExcel } from "../Service/Users";
-import { exportBooksExcel } from "../Service/Books";
 
 const Admin = ()=>{
   function exportUsers() {
@@ -25,17 +22,24 @@ const Admin = ()=>{
       });
   }
 
-  
-        const exportBooks =async(e)=> { 
-          try {
-              e.preventDefault()
-              
-              await exportBooksExcel() 
-            } catch (error) {
-              toast(error.response.data.message)
-            }
-        
-          }
+  function exportBooks() {
+    fetch('http://localhost:8001/admin/dashboard/excel/book')
+      .then((response) => response.blob())
+      .then((blob) => {
+  // Create a download link element
+    const downloadLink = document.createElement('a');
+    downloadLink.href = URL.createObjectURL(blob);
+    downloadLink.download = 'books.xls';
+  // Append the link to the body and trigger the download
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+  // Clean up the URL object after the download
+    URL.revokeObjectURL(downloadLink.href);
+      })
+      .catch((error) => {
+        console.error('Error downloading Excel:', error);
+      });
+  }
 
     return (
     <div className="main row">
