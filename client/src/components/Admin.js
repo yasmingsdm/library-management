@@ -6,23 +6,26 @@ import { exportUsersExcel } from "../Service/Users";
 import { exportBooksExcel } from "../Service/Books";
 
 const Admin = ()=>{
-    const exportUsers =async(e)=> { 
-        try {
-          e.preventDefault()
-            const response = await exportUsersExcel() 
-            const blob = new Blob([response.data], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
-            const url = URL.createObjectURL(blob);
-            const link = document.createElement('a');
-            link.href = url;
-            link.setAttribute('download', 'users.xlsx');
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
-          } catch (error) {
-            toast(error.response.data.message)
-          }
-        }
+  function exportUsers() {
+    fetch('http://localhost:8001/admin/dashboard/excel/user')
+      .then((response) => response.blob())
+      .then((blob) => {
+  // Create a download link element
+    const downloadLink = document.createElement('a');
+    downloadLink.href = URL.createObjectURL(blob);
+    downloadLink.download = 'users.xls';
+  // Append the link to the body and trigger the download
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+  // Clean up the URL object after the download
+    URL.revokeObjectURL(downloadLink.href);
+      })
+      .catch((error) => {
+        console.error('Error downloading Excel:', error);
+      });
+  }
 
+  
         const exportBooks =async(e)=> { 
           try {
               e.preventDefault()
