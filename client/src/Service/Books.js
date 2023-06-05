@@ -1,6 +1,7 @@
 import axios from 'axios'
 
-const baseUrl = 'https://backend-vuk4.onrender.com/'
+const baseUrl = 'https://backend-vuk4.onrender.com'
+
 
 export const createBookServ = async(book)=>{
     const response = await axios.post(`${baseUrl}/book/`, book)
