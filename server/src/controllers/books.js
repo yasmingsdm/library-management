@@ -10,12 +10,10 @@ const getAllBooks = async (req, res)=>{
 }
 const getAllBooksByPage = async (req, res)=>{
     try {
-        console.log('before')
         const page = req.query.page
         const perPage = 6
 
         const books = await Book.find().skip((page-1)*perPage).limit(perPage)
-        console.log('after')
        res.status(200).json({message:'list of books', books}) 
 
     } catch (e) {
