@@ -10,4 +10,6 @@ const dev={
   sessionKey: process.env.SESSION_KEY,
 }
 
+console.log("=====" + dev.url)
+
 module.exports = dev
