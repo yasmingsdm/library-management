@@ -19,9 +19,9 @@ const GetUsers = ()=> {
         <table>
             <thead>
                 <tr>
-                    <th>Name</th>
+                    <th className="hide">Name</th>
                     <th>Username</th>
-                    <th>E-mail</th>
+                    <th className="hide">E-mail</th>
                     <th>Ban/Unban</th>
                     <th>Delete</th>
                 </tr>

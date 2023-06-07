@@ -21,3 +21,9 @@
 .height{
   min-height:80vh;
 }
+
+@media screen and (max-width: 700px){
+  .books{
+    display: block
+  }
+}

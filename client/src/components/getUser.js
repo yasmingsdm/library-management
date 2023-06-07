@@ -19,9 +19,9 @@ const GetUser = (user)=>{
 
     return (
         <tr key={user._id}>
-            <td>{user.name}</td>
+            <td className="hide">{user.name}</td>
             <td>{user.username}</td>
-            <td>{user.email}</td>
+            <td className="hide">{user.email}</td>
             <td> <button onClick={()=>handleBan(id)}>{banned?'Unban':'Ban'}</button></td>
             <td><a className="icon" href='/get-users' onClick={()=>deleteUser(id)}><FaTrash/></a></td>
         </tr>
